@@ -1,0 +1,29 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.31'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        setUrl("https://maven.goyman.com/")
+    }
+}
+
+dependencies {
+
+    implementation 'com.github.dsrees:JavaPhoenixClient:1.0.0'
+
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+//
+//    // Web Socket Client
+//    implementation("com.neovisionaries:nv-websocket-client:2.9")
+//
+//    // JSON handling
+//    implementation("com.github.openjson:openjson:1.0.11")
+//
+//    // Phoenix Channel Client
+//    implementation("ch.kuon.phoenix:channel:0.1.9")
+}
