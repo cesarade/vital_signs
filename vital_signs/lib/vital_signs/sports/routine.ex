@@ -16,6 +16,8 @@ defmodule VitalSigns.Sports.Routine do
     field :terminate, :boolean
     field :details, :string
 
+    field :sport, :string, virtual: true
+
     timestamps()
   end
 

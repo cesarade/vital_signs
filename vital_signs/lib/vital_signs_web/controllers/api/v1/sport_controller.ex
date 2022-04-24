@@ -5,6 +5,7 @@ defmodule VitalSignsWeb.API.V1.SportController do
   alias VitalSignsWeb.ErrorHelpers
 
   alias VitalSigns.Sports
+  alias VitalSignsWeb.RoutineView
 
 
   def create(conn, params) do
@@ -21,6 +22,16 @@ defmodule VitalSignsWeb.API.V1.SportController do
     end
   end
 
-  
+  def list_routines(conn, params) do
+    routines = Sports.get_routines_by_client(params["client_id"])
+    result = RoutineView.render("routines.json", %{routines: routines})
+    json(conn, %{data: %{routines: result.routines}})
+  end
+
+  def list_routines_terminate(conn, params) do
+    routines = Sports.get_routines_by_client(params["client_id"], params["terminate"])
+    result = RoutineView.render("routines.json", %{routines: routines})
+    json(conn, %{data: %{routines: result.routines}})
+  end
 
 end
