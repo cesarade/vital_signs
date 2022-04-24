@@ -131,12 +131,6 @@ Repo.insert!(%Client{
 })
 
 
-Repo.insert(%TypeSport{name: "CORRER"})
-Repo.insert(%TypeSport{name: "NADAR"})
-Repo.insert(%TypeSport{name: "CICLISMO"})
-Repo.insert(%TypeSport{name: "CAMINAR"})
-Repo.insert(%TypeSport{name: "PESAS"})
-
 Repo.insert(%TypeSpecialist{description: "DOCTOR"})
 Repo.insert(%TypeSpecialist{description: "PERSONAL TRAINING"})
 
@@ -209,6 +203,12 @@ Repo.insert!(%VitalSign{id: "efc41bec-1ccf-4a3c-8d27-57076ff6174f",name: "steps"
 Repo.insert!(%VitalSign{id: "83251a7c-4213-4227-9f9f-28eb6fab0ace",name: "calories"})
 Repo.insert!(%VitalSign{id: "0fbab19b-72e5-43c4-8c96-3989b15ff6f4",name: "blood pressure"})
 
+
+Repo.insert(%TypeSport{id: "899e6b2c-5fe7-4444-84ef-add3e28d7dc5", name: "CORRER"})
+Repo.insert(%TypeSport{id: "8a1f0cd7-59d3-4dcd-9637-97344883c610", name: "NADAR"})
+Repo.insert(%TypeSport{id: "efc41bec-1ccf-4a3c-8d27-57076ff6174f", name: "CICLISMO"})
+Repo.insert(%TypeSport{id: "83251a7c-4213-4227-9f9f-28eb6fab0ace", name: "CAMINAR"})
+Repo.insert(%TypeSport{id: "0fbab19b-72e5-43c4-8c96-3989b15ff6f4", name: "PESAS"})
 
 # "899e6b2c-5fe7-4444-84ef-add3e28d7dc5"
 # "8a1f0cd7-59d3-4dcd-9637-97344883c610"
