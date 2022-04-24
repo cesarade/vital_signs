@@ -16,6 +16,8 @@ alias VitalSigns.Specialists.{Specialist, Client, ClientSpecialist}
 alias VitalSigns.Users.User
 alias VitalSigns.VitalSigns.VitalSign
 
+alias VitalSigns.Sports.TypeSport
+
 
 angel = Repo.insert(%Client{
       id: "ec924ca4-cba7-4621-8b34-3805f226a31b",
@@ -128,6 +130,12 @@ Repo.insert!(%Client{
       image_url: ".."
 })
 
+
+Repo.insert(%TypeSport{name: "CORRER"})
+Repo.insert(%TypeSport{name: "NADAR"})
+Repo.insert(%TypeSport{name: "CICLISMO"})
+Repo.insert(%TypeSport{name: "CAMINAR"})
+Repo.insert(%TypeSport{name: "PESAS"})
 
 Repo.insert(%TypeSpecialist{description: "DOCTOR"})
 Repo.insert(%TypeSpecialist{description: "PERSONAL TRAINING"})
