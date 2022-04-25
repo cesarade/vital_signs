@@ -34,4 +34,20 @@ defmodule VitalSignsWeb.API.V1.SportController do
     json(conn, %{data: %{routines: result.routines}})
   end
 
+
+  def get_rutine(conn, params) do
+    routine = Sports.get_rutine(params["id"])
+    result = RoutineView.render("routine.json", %{routine: routine})
+    json(conn, %{data: %{routine: result}})
+  end
+
+  def start_routine(%{assigns: %{id: routine_id}} = conn, _params) do
+
+  end
+
+  def termine_routine(%{assigns: %{id: routine_id}} = conn, _params) do
+
+  end
+
+
 end

@@ -50,6 +50,11 @@ defmodule VitalSigns.Sports do
     }
   end
 
+
+  def get_rutine(id) do
+    Repo.get(Routine, id)
+  end
+
   def get_routines_by_client(client_id) do
     result = get_routines_by_client_query(client_id)
     Repo.all(result)
