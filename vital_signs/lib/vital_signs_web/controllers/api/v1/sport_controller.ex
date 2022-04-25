@@ -76,8 +76,6 @@ defmodule VitalSignsWeb.API.V1.SportController do
       |> put_status(404)
       |> json(%{error: %{status: 404, message: "Not found routine"}})
     end
-
   end
-
 
 end

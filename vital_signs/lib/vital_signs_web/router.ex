@@ -50,6 +50,7 @@ defmodule VitalSignsWeb.Router do
     get "/sports/get_routine", SportController, :get_rutine
     get "/sports/routines_terminate", SportController, :list_routines_terminate
 
+    get "/trackings/get_tracking_by_routine_date", TrackingController, :get_tracking_by_routine_date
     get "/trackings/get_tracking_by_client_avg_date_query", TrackingController, :get_tracking_by_client_day_date
     get "/trackings/get_tracking_by_client_date_query", TrackingController, :get_tracking_by_client_date_query
     get "/trackings/vital_signs", TrackingController, :get_vital_signs

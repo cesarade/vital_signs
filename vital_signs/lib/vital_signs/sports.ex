@@ -4,6 +4,7 @@ defmodule VitalSigns.Sports do
 
   alias VitalSigns.Sports.TypeSport
   alias VitalSigns.Sports.Routine
+  alias VitalSigns.Trackings
 
 
   def create_routine(attrs \\ %{}) do
@@ -16,7 +17,7 @@ defmodule VitalSigns.Sports do
     from r in Routine,
     join: s in TypeSport, on: s.id == r.type_sport_id,
     where: r.client_id == ^client_id,
-    order_by: [desc: :specialist_date],
+    order_by: [asc: :specialist_date],
     select: %Routine{
       id: r.id,
       type_sport_id: r.type_sport_id,
@@ -35,7 +36,7 @@ defmodule VitalSigns.Sports do
     from r in Routine,
     join: s in TypeSport, on: s.id == r.type_sport_id,
     where: r.client_id == ^client_id and r.terminate == ^terminate,
-    order_by: [desc: :specialist_date],
+    order_by: [asc: :specialist_date],
     select: %Routine{
       id: r.id,
       type_sport_id: r.type_sport_id,
@@ -85,8 +86,5 @@ defmodule VitalSigns.Sports do
     |> Routine.changeset(params)
     |> Repo.update()
   end
-
-
-
 
 end

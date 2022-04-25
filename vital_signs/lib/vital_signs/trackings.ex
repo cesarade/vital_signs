@@ -80,6 +80,25 @@ defmodule VitalSigns.Trackings do
     }
   end
 
+  defp get_tracking_by_routine_date_query(client_id, first_date, last_date) do
+    from t in Tracking,
+    join: v in VitalSign, on: v.id == t.vital_sign_id,
+    where: t.client_id == ^client_id and t.inserted_at >= ^first_date and t.inserted_at <= ^last_date,
+    order_by: [asc: :inserted_at],
+    select: %Tracking{
+      id: t.id,
+      value: t.value,
+      client_id: t.client_id,
+      inserted_at: t.inserted_at,
+      vital_sign_id: t.vital_sign_id,
+      vital_sign_name: v.name
+    }
+  end
+
+
+
+
+
   def get_tracking_by_client_day_date_query(client_id, first_date, last_date) do
     ndt_f = NaiveDateTime.from_iso8601!(first_date <> " 00:00:01")
     ndt_l = NaiveDateTime.from_iso8601!(last_date <> " 23:59:01")
@@ -132,6 +151,11 @@ defmodule VitalSigns.Trackings do
 
   def get_tracking_by_client_day_date(client_id, first_date, last_date) do
     result = get_tracking_by_client_day_date_query(client_id, first_date, last_date)
+    Repo.all(result)
+  end
+
+  def get_tracking_by_routine_date(client_id, first_date, last_date) do
+    result = get_tracking_by_routine_date_query(client_id, first_date, last_date)
     Repo.all(result)
   end
 
