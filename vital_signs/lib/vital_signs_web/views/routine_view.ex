@@ -14,7 +14,9 @@ defmodule VitalSignsWeb.RoutineView do
       sport: routine.sport,
       client_id: routine.client_id,
       specialist_id: routine.specialist_id,
-      init_date: routine.init_date,
+      specialist_date: routine.specialist_date,
+      start_date: routine.start_date,
+      end_date: routine.end_date,
       terminate: routine.terminate,
       details: routine.details
     }

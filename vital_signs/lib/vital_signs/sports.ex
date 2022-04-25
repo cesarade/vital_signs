@@ -12,19 +12,20 @@ defmodule VitalSigns.Sports do
     |> Repo.insert()
   end
 
-
   def get_routines_by_client_query(client_id) do
     from r in Routine,
     join: s in TypeSport, on: s.id == r.type_sport_id,
     where: r.client_id == ^client_id,
-    order_by: [desc: :init_date],
+    order_by: [desc: :specialist_date],
     select: %Routine{
       id: r.id,
       type_sport_id: r.type_sport_id,
       sport: s.name,
       client_id: r.client_id,
       specialist_id: r.specialist_id,
-      init_date: r.init_date,
+      specialist_date: r.specialist_date,
+      start_date: r.start_date,
+      end_date: r.end_date,
       terminate: r.terminate,
       details: r.details
     }
@@ -34,14 +35,16 @@ defmodule VitalSigns.Sports do
     from r in Routine,
     join: s in TypeSport, on: s.id == r.type_sport_id,
     where: r.client_id == ^client_id and r.terminate == ^terminate,
-    order_by: [desc: :init_date],
+    order_by: [desc: :specialist_date],
     select: %Routine{
       id: r.id,
       type_sport_id: r.type_sport_id,
       sport: s.name,
       client_id: r.client_id,
       specialist_id: r.specialist_id,
-      init_date: r.init_date,
+      specialist_date: r.specialist_date,
+      start_date: r.start_date,
+      end_date: r.end_date,
       terminate: r.terminate,
       details: r.details
     }
