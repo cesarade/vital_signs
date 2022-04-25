@@ -70,5 +70,23 @@ defmodule VitalSigns.Sports do
     Repo.all(TypeSport)
   end
 
+  def update_start_date(%Routine{} = routine, params) do
+    params = Map.put(params, "start_date", DateTime.utc_now())
+    routine
+    |> Routine.changeset(params)
+    |> Repo.update()
+  end
+
+  def update_terminate_date(%Routine{} = routine, params) do
+    params = Map.put(params, "end_date", DateTime.utc_now())
+    params = Map.put(params, "terminate", true)
+
+    routine
+    |> Routine.changeset(params)
+    |> Repo.update()
+  end
+
+
+
 
 end

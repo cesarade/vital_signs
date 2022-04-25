@@ -41,11 +41,41 @@ defmodule VitalSignsWeb.API.V1.SportController do
     json(conn, %{data: %{routine: result}})
   end
 
-  def start_routine(%{assigns: %{id: routine_id}} = conn, _params) do
+  def start_routine(conn, params) do
+    routine = Sports.get_rutine(params["id"])
+    case Sports.update_start_date(routine, params) do
+      {:ok, _routine} ->
+        json(conn, %{data: %{status: 200, message: "The routine was started"}})
 
+      {:error, %Ecto.Changeset{} = changeset} ->
+          errors = Changeset.traverse_errors(changeset, &ErrorHelpers.translate_error/1)
+
+          conn
+          |> put_status(404)
+          |> json(%{error: %{status: 404, message: "Couldn't update the routine", errors: errors}})
+    end
   end
 
-  def termine_routine(%{assigns: %{id: routine_id}} = conn, _params) do
+  def termine_routine(conn, params) do
+    routine = Sports.get_rutine(params["id"])
+    if routine != nil do
+      case Sports.update_terminate_date(routine, params) do
+        {:ok, _routine} ->
+          json(conn, %{data: %{status: 200, message: "The routine was started"}})
+
+        {:error, %Ecto.Changeset{} = changeset} ->
+            errors = Changeset.traverse_errors(changeset, &ErrorHelpers.translate_error/1)
+
+            conn
+            |> put_status(404)
+            |> json(%{error: %{status: 404, message: "Couldn't update the routine", errors: errors}})
+      end
+
+    else
+      conn
+      |> put_status(404)
+      |> json(%{error: %{status: 404, message: "Not found routine"}})
+    end
 
   end
 

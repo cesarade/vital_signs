@@ -41,8 +41,11 @@ defmodule VitalSignsWeb.Router do
     pipe_through [:api, :api_protected]
 
 
-    get "/sports/type_sports", TypeSportController, :type_sports
     post "/sports/routines", SportController, :create
+    post "/sports/start_routine", SportController, :start_routine
+    post "/sports/termine_routine", SportController, :termine_routine
+
+    get "/sports/type_sports", TypeSportController, :type_sports
     get "/sports/routines", SportController, :list_routines
     get "/sports/get_routine", SportController, :get_rutine
     get "/sports/routines_terminate", SportController, :list_routines_terminate
